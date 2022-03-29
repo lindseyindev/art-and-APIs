@@ -55,6 +55,19 @@ export function App() {
 							<ul>
 								{artworkData.map((item, i) => {
 									//console.log(item);
+									const {
+										id = '',
+										artist_title = '',
+										date_display = '',
+										image_id = '',
+										title = '',
+										thumbnail = {},
+									} = item;
+									const {
+										width = 400,
+										height = 400,
+										alt_text = '',
+									} = thumbnail;
 									return (
 										<li key={item.id}>
 											<button
@@ -62,20 +75,17 @@ export function App() {
 												type="click"
 												onClick={(e) => handleComponentRender(e, item.id)}
 											>
-												<p>{item.id}</p>
-												<p>{item.artist_title}</p>
-												<p>{item.date_display}</p>
-												<p>{item.image_id}</p>
-												<p>{item.thumbnail.width}</p>
-												<p>{item.thumbnail.height}</p>
-												<p>{item.title}</p>
+												<p>{id}</p>
+												<p>{artist_title}</p>
+												<p>{date_display}</p>
+												<p>{image_id}</p>
+												<p>{width}</p>
+												<p>{height}</p>
+												<p>{title}</p>
 												<img
-													alt={item.thumbnail.alt_text}
-													height={imageAspectRatio(
-														item.thumbnail.width,
-														item.thumbnail.height
-													)}
-													src={`https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`}
+													alt={alt_text}
+													height={imageAspectRatio(width, height)}
+													src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`}
 													width="100%"
 												/>
 											</button>

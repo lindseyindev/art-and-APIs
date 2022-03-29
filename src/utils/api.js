@@ -33,7 +33,8 @@ export function searchArtworks(query) {
 	 * TODO: replace with path to `/artworks/search/` endpoint,
 	 * as described in README.md.
 	 */
-	const requestUrl = `${process.env.PUBLIC_URL}/ARTWORKS_SEARCH_RESULT.json`;
+	//const requestUrl = `${process.env.PUBLIC_URL}/ARTWORKS_SEARCH_RESULT.json`;
+	const requestUrl = `https://api.artic.edu/api/v1/artworks/search?q=${query}&query[term][is_public_domain]=true&fields=artist_title,id,date_display,image_id,thumbnail.alt_text,thumbnail.width,thumbnail.height,title`;
 
 	return fetch(requestUrl).then((res) => {
 		if (res.ok) {

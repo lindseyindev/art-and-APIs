@@ -13,6 +13,15 @@ export function ImageDetails({
 	imageAspectRatio,
 	specificPainting,
 }) {
+	const {
+		id = '',
+		artist_title = '',
+		date_display = '',
+		image_id = '',
+		title = '',
+		thumbnail = {},
+	} = specificPainting;
+	const { width = 400, height = 400, alt_text = '' } = thumbnail;
 	if (specificPainting) {
 		console.log(specificPainting);
 		return (
@@ -20,20 +29,17 @@ export function ImageDetails({
 				<button type="click" onClick={(e) => handleComponentRender(e)}>
 					Back to Search
 				</button>
-				<p>{specificPainting.id}</p>
-				<p>{specificPainting.artist_title}</p>
-				<p>{specificPainting.date_display}</p>
-				<p>{specificPainting.image_id}</p>
-				<p>{specificPainting.thumbnail.width}</p>
-				<p>{specificPainting.thumbnail.height}</p>
-				<p>{specificPainting.title}</p>
+				<p>{`Painting ID: ${id}`}</p>
+				<p>{`Artist: ${artist_title}`}</p>
+				<p>{`Date Display: ${date_display}`}</p>
+				<p>{`Image ID: ${image_id}`}</p>
+				<p>{`Thumbnail Width: ${width}`}</p>
+				<p>{`Thumbnail Height: ${height}`}</p>
+				<p> {`Title: ${title}`}</p>
 				<img
-					alt={specificPainting.thumbnail.alt_text}
-					height={imageAspectRatio(
-						specificPainting.thumbnail.width,
-						specificPainting.thumbnail.height
-					)}
-					src={`https://www.artic.edu/iiif/2/${specificPainting.image_id}/full/843,/0/default.jpg`}
+					alt={alt_text}
+					height={imageAspectRatio(width, height)}
+					src={`https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`}
 					width="100%"
 				/>
 			</div>
